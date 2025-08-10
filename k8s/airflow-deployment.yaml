@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    kompose.cmd: kompose convert
+    kompose.cmd: kompose convert -o k8s/
     kompose.version: 1.36.0 (HEAD)
   labels:
     io.kompose.service: airflow
@@ -17,29 +17,29 @@ spec:
   template:
     metadata:
       annotations:
-        kompose.cmd: kompose convert
+        kompose.cmd: kompose convert -o k8s/
         kompose.version: 1.36.0 (HEAD)
       labels:
         io.kompose.service: airflow
     spec:
       containers:
-        - env:
+        - name: airflow
+          image: apache/airflow:2.7.1
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          env:
             - name: AIRFLOW__CORE__EXECUTOR
               value: LocalExecutor
             - name: AIRFLOW__CORE__FERNET_KEY
               value: replace_with_secure_fernet_key
             - name: AIRFLOW__CORE__SQL_ALCHEMY_CONN
               value: postgresql+psycopg2://myuser:mypassmy@postgres:5432/mydb
-          image: apache/airflow:2.7.1
-          name: airflow
-          ports:
-            - containerPort: 8080
-              protocol: TCP
           volumeMounts:
             - mountPath: /opt/airflow/dags
               name: airflow-claim0
             - mountPath: /opt/airflow/logs
-              name: airflow-cm1
+              name: airflow-logs-pvc    # updated to use airflow-logs-pvc here
             - mountPath: /opt/airflow/plugins
               name: airflow-claim2
       restartPolicy: Always
@@ -47,9 +47,9 @@ spec:
         - name: airflow-claim0
           persistentVolumeClaim:
             claimName: airflow-claim0
-        - configMap:
-            name: airflow-cm1
-          name: airflow-cm1
+        - name: airflow-logs-pvc
+          persistentVolumeClaim:
+            claimName: airflow-logs-pvc
         - name: airflow-claim2
           persistentVolumeClaim:
             claimName: airflow-claim2

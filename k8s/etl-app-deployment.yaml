@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    kompose.cmd: kompose convert
+    kompose.cmd: kompose convert -o k8s/
     kompose.version: 1.36.0 (HEAD)
   labels:
     io.kompose.service: etl-app
@@ -17,7 +17,7 @@ spec:
   template:
     metadata:
       annotations:
-        kompose.cmd: kompose convert
+        kompose.cmd: kompose convert -o k8s/
         kompose.version: 1.36.0 (HEAD)
       labels:
         io.kompose.service: etl-app
@@ -33,20 +33,16 @@ spec:
             - name: DB_USER
               value: myuser
           image: etl-app
+          imagePullPolicy: IfNotPresent
           name: etl-app
           ports:
             - containerPort: 8000
               protocol: TCP
           volumeMounts:
-            - mountPath: /app/data
-              name: etl-app-cm0
             - mountPath: /app/config
-              name: etl-app-cm1
+              name: etl-app-cm0
       restartPolicy: Always
       volumes:
         - configMap:
             name: etl-app-cm0
           name: etl-app-cm0
-        - configMap:
-            name: etl-app-cm1
-          name: etl-app-cm1
