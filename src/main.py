@@ -1,5 +1,14 @@
-def main():
-    print('Hello, world!')
+import time
+import sys
 
-if __name__ == '__main__':
+def main():
+    spinner = ['|', '/', '-', '\\']
+    i = 0
+    while True:
+        msg = f'\r👋 Hello, World! Running smoothly {spinner[i % len(spinner)]}'
+        print(msg, end='', flush=True)
+        time.sleep(0.3)
+        i += 1
+
+if __name__ == "__main__":
     main()
