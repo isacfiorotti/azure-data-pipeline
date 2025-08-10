@@ -19,7 +19,6 @@ RUN poetry config virtualenvs.create false && poetry install --no-interaction --
 # Copy source code and config
 COPY src/ ./src/
 COPY config/ ./config/
-COPY data/ ./data/
 
 # Run the main pipeline script
 CMD ["python", "src/main.py"]
