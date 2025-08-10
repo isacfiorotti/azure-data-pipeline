@@ -33,7 +33,7 @@ spec:
             - name: AIRFLOW__CORE__EXECUTOR
               value: LocalExecutor
             - name: AIRFLOW__CORE__FERNET_KEY
-              value: H5aD9q0h-pL-v6EwXoJk1l2m3n4o5p6q7r8s9t0u=
+              value: H5aD9q0h-pL-v6EwXoJk1l2m3n4o5p6q7r8s9t0u= # REPLACE THIS WITH YOUR OWN FERNET KEY
             - name: AIRFLOW__CORE__SQL_ALCHEMY_CONN
               value: postgresql+psycopg2://myuser:mypassword@postgres:5432/mydb
           volumeMounts:
