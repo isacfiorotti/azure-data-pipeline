@@ -1,5 +1,5 @@
-# azure-data-pipeline
-Template for modern ETL data pipeline for batch processing. Supports local dev and cloud deployment. 
+# azure-data-platform
+Template for modern azure data platform. Supports local dev and cloud deployment. 
 
 This project uses Docker for spinning up local PostgresDB, Airflow for orchestration. Python for ETL development, dbt for Data Modelling and Terraform for Cloud provisioning.
 
