@@ -211,3 +211,8 @@ __marimo__/
 
 # Misc
 /Data/*
+
+#dbt
+target/
+dbt_packages/
+logs/
