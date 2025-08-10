@@ -10,7 +10,7 @@ To use cloud deployments it is necessary that you have an Azure subscription!
 
 ### Local Deployment Guide
 
-This project uses Docker and Kind to 
+This project uses Docker and Kind for local development and testing.
 
 ---
 
@@ -58,3 +58,13 @@ Using curl:
 curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.20.0/kind-linux-amd64
 chmod +x ./kind
 sudo mv ./kind /usr/local/bin/kind
+```
+
+
+## Extending
+
+This data platform template was made to be easily extendable. 
+
+Some basic services include 
+
+TIP: Tools like Kompose allow for 
