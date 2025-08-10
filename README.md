@@ -3,12 +3,17 @@ Template for modern azure data platform. Supports local dev and cloud deployment
 
 This project uses Docker for spinning up local PostgresDB, Airflow for orchestration. Python for ETL development, dbt for Data Modelling and Terraform for Cloud provisioning.
 
+## Index
+
+1. [Get-started](#get-started)
+2. [Tools](#tools)
+
 ## Get started
 
 ### Cloud Deployment
 To use cloud deployments it is necessary that you have an Azure subscription!
 
-### Local Deployment Guide
+### Local Deployment
 
 This project uses Docker and Kind for local development and testing.
 
@@ -59,6 +64,12 @@ curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.20.0/kind-linux-amd64
 chmod +x ./kind
 sudo mv ./kind /usr/local/bin/kind
 ```
+
+## Tools
+### Airflow
+### dbt
+### PostgresSQL
+
 
 
 ## Extending
