@@ -5,6 +5,7 @@ metadata:
     kompose.cmd: kompose convert -o k8s/
     kompose.version: 1.36.0 (HEAD)
   labels:
+    app: postgres
     io.kompose.service: postgres
   name: postgres
 spec:
@@ -20,6 +21,7 @@ spec:
         kompose.cmd: kompose convert -o k8s/
         kompose.version: 1.36.0 (HEAD)
       labels:
+        app: postgres
         io.kompose.service: postgres
     spec:
       containers:
@@ -27,7 +29,7 @@ spec:
             - name: POSTGRES_DB
               value: mydb
             - name: POSTGRES_PASSWORD
-              value: mypassmy
+              value: mypassword
             - name: POSTGRES_USER
               value: myuser
           image: postgres:15
