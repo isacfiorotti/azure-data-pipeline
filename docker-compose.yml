@@ -40,7 +40,6 @@ services:
       - postgres
       - airflow
     volumes:
-      - ./data:/app/data
       - ./config:/app/config
 
 volumes:

@@ -34,7 +34,7 @@ spec:
             - name: AIRFLOW__CORE__FERNET_KEY
               value: replace_with_secure_fernet_key
             - name: AIRFLOW__CORE__SQL_ALCHEMY_CONN
-              value: postgresql+psycopg2://myuser:mypassmy@postgres:5432/mydb
+              value: postgresql+psycopg2://myuser:mypassword@postgres:5432/mydb
           volumeMounts:
             - mountPath: /opt/airflow/dags
               name: airflow-claim0
